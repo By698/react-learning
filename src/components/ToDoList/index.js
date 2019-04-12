@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import ToDoItem from './ToDoItem'
+import ToDoItem from '../ToDoItem/'
 
-class ToDoList extends Component {
+export default class ToDoList extends Component {
     state = {
         tasks: this.props.tasks,
         draft: ''
@@ -42,5 +42,3 @@ class ToDoList extends Component {
         )
     }
 }
-
-export default ToDoList

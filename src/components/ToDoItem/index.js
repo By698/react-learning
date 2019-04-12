@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class ToDoItem extends Component {
+export default class ToDoItem extends Component {
     static defaultProps = {
         done: false
     }
@@ -34,4 +34,3 @@ class ToDoItem extends Component {
         )
     }
 }
-export default ToDoItem
