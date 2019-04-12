@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 
 class ToDoItem extends Component {
-  state = {
-    text: this.props.task.text,
+  static defaultProps = {
     done: false
+  }
+  state = {
+    text: this.props.text,
+    done: this.props.done
   }
 
   toggleDone = () => {
     const { done, text } = this.state
-    let tmpText = text
-    if (!done) tmpText = '|' + tmpText + '|'
-    else tmpText = tmpText.slice(1,-1)
+    let tmpText = text;
     this.setState({done: !done, text: tmpText})
   }
 
@@ -19,7 +20,11 @@ class ToDoItem extends Component {
     const {text} = this.state
     return (
       <div>
-        <li onClick={this.toggleDone}>{text}</li>
+        <li
+        onClick={this.toggleDone}
+        className={this.state.done ? 'doneTodo' : ''}>
+          { text }
+        </li>
         {/* <button>delete</button> */}
       </div>
     )
@@ -40,7 +45,7 @@ class ToDoList extends Component {
     const { tasks, draft} = this.state
     if(draft){
       const list = tasks
-      list.push(draft)
+      list.push({text: draft})
       this.setState({
         tasks: list,
         draft: ''
@@ -57,7 +62,7 @@ class ToDoList extends Component {
         <h1>{title}</h1>
         <div>
           <ul>
-            {tasks.map(task =><ToDoItem task={task} />)}
+            {tasks.map(task =><ToDoItem text={ task.text } done={ task.done} />)}
           </ul>
         </div>
         <input type='text' onChange={this.updateDraft} value={draft}/>

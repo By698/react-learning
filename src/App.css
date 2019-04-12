@@ -1,0 +1,13 @@
+li {
+  transition: ease-in .2s;
+}
+
+.doneTodo {
+  color: green;
+  text-decoration: line-through;
+  opacity: .5;
+}
+
+li:hover {
+  opacity: .3;
+}
