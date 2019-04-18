@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ToDoList from './components/ToDoList/'
+import ToDoList from './components/ToDoList'
 import './App.css';
 
 class App extends Component {
@@ -12,8 +12,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        < ToDoList title = 'My list'
-        tasks = { this.myTasks }
+        < ToDoList
+          title = 'My list'
+          tasks = { this.myTasks }
         />
       </div>
     );

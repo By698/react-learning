@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import ToDoItem from '../ToDoItem/'
+import ToDoItem from '../ToDoItem'
+import NewTodoForm from '../NewTodoForm'
 
 export default class ToDoList extends Component {
     state = {
@@ -31,13 +32,21 @@ export default class ToDoList extends Component {
         return (
             <div>
                 <h1>{ title}</h1>
-                <div>
-                    <ul>
-                        { tasks.map(task => <ToDoItem text = { task.text } done = { task.done } />)}
-                    </ul>
-                </div>
-                <input type = 'text' onChange = { this.updateDraft } value = { draft }/>
-                <button onClick = { this.updateList}>Add</button>
+                <ul>
+                    { tasks.map(task =>
+                        <ToDoItem
+                            text = { task.text }
+                            done = { task.done }
+                        />
+                    )}
+                </ul>
+                < NewTodoForm
+                    onSubmit = {this.updateList}
+                    onChange = {this.updateDraft}
+                    draft = {draft}
+                />
+                {/* <input type='text' onChange={this.updateDraft} value={draft} />
+                <button onClick={this.updateList}>Add</button> */}
             </div>
         )
     }
