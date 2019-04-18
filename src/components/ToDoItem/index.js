@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 export default class ToDoItem extends Component {
+
     static defaultProps = {
         done: false
     }
@@ -19,9 +20,7 @@ export default class ToDoItem extends Component {
     }
 
     render() {
-        const {
-            text
-        } = this.state
+        const { text } = this.state
         return (
             <div>
                 <li
